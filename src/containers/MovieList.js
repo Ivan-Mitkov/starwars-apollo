@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { withTheme } from "styled-components";
+import { withRouter } from "react-router-dom";
 import { movies } from "../data/movies";
 import CartMovie from "../components/CartMovie";
 
@@ -18,22 +19,21 @@ const MoviesList = styled.div`
     padding: 2rem;
   }
 `;
-const MovieList = () => {
+const MovieList = (props) => {
   const [movie, setMovie] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const result = await movies;
       if (result) {
         // console.log(result);
-        setMovie((result.data.allEpisodes.edges));
+        setMovie(result.data.allEpisodes.edges);
       }
     };
     fetchData();
   }, []);
-
-  const formatCrawl = (i,words) => {
+  const onClickHandle = id => {props.history.push(`/episodes/${id}`)};
+  const formatCrawl = (i, words) => {
     if (movie) {
-    //   console.log(movie);
 
       return (
         movie[i].node.openingCrawl
@@ -41,31 +41,27 @@ const MovieList = () => {
           .slice(0, words)
           .join(" ") + "..."
       );
-    //   return (
-    //     movie[i].node.openingCrawl
-    //       .split("")
-    //       .slice(0, words)
-    //       .join("") + "..."
-    //   );
     }
     return "";
   };
   return (
     <>
       <MoviesList>
-        {movie&&movie.map((m,i) => {
-         return <CartMovie
-         key={movie&&m.node.episodeId}
-            url={movie && m.node.image}
-            title={movie && m.node.title}
-            openingCrawl={movie && formatCrawl(i,15)}
-          />;
-        })}
-
-        
+        {movie &&
+          movie.map((m, i) => {
+            return (
+              <CartMovie
+                key={movie && m.node.episodeId}
+                url={movie && m.node.image}
+                title={movie && m.node.title}
+                openingCrawl={movie && formatCrawl(i, 15)}
+                onClick={()=>onClickHandle(m.node.episodeId)}
+              />
+            );
+          })}
       </MoviesList>
     </>
   );
 };
 
-export default withTheme(MovieList);
+export default withRouter( withTheme(MovieList));
