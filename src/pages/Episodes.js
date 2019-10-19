@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import MovieList from '../containers/MovieList';
+import styled from "styled-components";
+import { withTheme } from "styled-components";
 
+const EpisodesPage=styled.div`
+
+height:100vh;
+`;
 const Episodes = () => {
     return (
-        <div>
-            Epizodes
-        </div>
+        <EpisodesPage>
+            <MovieList/>
+        </EpisodesPage>
     )
 }
 
-export default Episodes
+export default withTheme(Episodes)

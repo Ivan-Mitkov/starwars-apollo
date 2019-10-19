@@ -49,7 +49,7 @@ const LinkDiv = styled.div`
 
 const NavBar = ({ theme, toggleTheme }) => {
   return (
-    <Navbar className="app">
+    <Navbar >
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>
       <LinkDiv>
         <Link to={"./episodes"}>Episodes</Link>
