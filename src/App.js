@@ -5,18 +5,12 @@ import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "./global";
 import Routes from "./Routes";
 import NavBar from "./components/NavBar";
+import { useDarkMode } from './useDarkMode';
 
 function App() {
-  const [theme, setTheme] = useState("lightTheme");
-  const toggleTheme = () => {
-    // if the theme is not light, then set it to dark
-    if (theme === "lightTheme") {
-      setTheme("darkTheme");
-      // otherwise, it should be light
-    } else {
-      setTheme("lightTheme");
-    }
-  };
+  const [theme, toggleTheme] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
   return (
     <ThemeProvider theme={theme === "lightTheme" ? lightTheme : darkTheme}>
       <>
