@@ -8,11 +8,11 @@ export const useDarkMode = () => {
     const toggleTheme = () => {
       // if the theme is not light, then set it to dark
       if (theme === "lightTheme") {
-        window.localStorage.setItem('theme', 'dark');
+        window.localStorage.setItem('theme', 'darkTheme');
         setTheme("darkTheme");
         // otherwise, it should be light
       } else {
-        window.localStorage.setItem('theme', 'light');
+        window.localStorage.setItem('theme', 'lightTheme');
         setTheme("lightTheme");
       }
     };
