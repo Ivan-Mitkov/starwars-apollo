@@ -29,7 +29,7 @@ const MovieList = props => {
       if (result) {
       
         // console.log(result);
-        const personsInEpisode = result.data.allPeople.edges.map(x => x.node);
+        const personsInEpisode = result.data.allPeople.edges.map(x => x.node).slice(0,12);
         // const searchedMovie=result.data.allEpisodes.edges.find()
         // console.log(personsInEpisode);
         setMovie(personsInEpisode);

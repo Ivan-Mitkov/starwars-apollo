@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import CaracterDetailCart from '../containers/CharacterDetails/CharacterDetailCart';
 
 const Character = () => {
     return (
-        <div>
-            Character
-        </div>
+       <CaracterDetailCart/>
     )
 }
 

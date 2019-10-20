@@ -53,7 +53,7 @@ const NavBar = ({ theme, toggleTheme }) => {
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>
       <LinkDiv>
         <Link to={"/episodes"}>Episodes</Link>
-        <Link to={"/characters"}>Charachters</Link>
+        <Link to={"/characters"}>Characters</Link>
       </LinkDiv>
     </Navbar>
   );
