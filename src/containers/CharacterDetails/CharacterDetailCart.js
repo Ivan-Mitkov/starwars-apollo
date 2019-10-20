@@ -66,11 +66,11 @@ const CharacterDetail = props => {
         if (episode) {
           setCharacter(episode.node);
         } else {
-          const episode = result.data.allPeople.edges.find(x => {
+          const episodeOther = result.data.allPeople.edges.find(x => {
             // console.log(x.node.episodeId);
-            return x.node.id.toString() === "1";
+            return x.node.id.toString() === "people.10";
           });
-          setCharacter(episode.node);
+          setCharacter(episodeOther.node);
         }
       }
     };
