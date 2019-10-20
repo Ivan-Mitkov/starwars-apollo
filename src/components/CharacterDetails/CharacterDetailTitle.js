@@ -13,6 +13,11 @@ const Title = styled.h1`
   width: 80%;
   text-align: center;
   border-bottom: 1px solid ${props=>props.theme.Black};
+  @media (max-width: 800px) {
+    font-size: 2rem;
+   line-height:3rem;
+   margin:4px auto;
+  }
 `;
 const CharacterDetailTitle = props => {
   return <Title>{props.name}</Title>;

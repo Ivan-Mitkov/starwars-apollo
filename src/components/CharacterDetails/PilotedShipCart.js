@@ -3,22 +3,19 @@ import styled from "styled-components";
 import { withTheme } from "styled-components";
 
 const Cart = styled.div`
-  width: 80%;
-  height: 80vh;
+  width: 100%;
+  height: 10vh;
   background: red;
-  margin: 3rem auto;
+  margin: 12px auto;
   min-width: 250px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content:flex-start;
   ${props => {
     return { ...props.theme.cards };
   }}
   @media (max-width: 800px) {
-    width: 80%;
-    height:80vh;
-   
+    
   }
 
   /* &:hover {
@@ -27,26 +24,26 @@ const Cart = styled.div`
 `;
 
 const Image = styled.div`
-  width: 80%;
-  height: 66%;
-  background-size: cover;
+  /* width: 80%; */
+  height: 100%;
+  width:30%;
+  background-size: contain;
+  background-repeat:no-repeat;
   border-radius: 12px;
-  min-width: 200px;
-  padding:16px;
+  min-width: 70px;
   @media (max-width: 800px) {
-    
-    margin:16px;
+   
     border-radius: 12px;
   }
 `;
-const MainHeader = styled.h1`
+const MainHeader = styled.h2`
   ${props => {
     return { ...props.theme.primaryHeading };
   }}
   margin:12px;
-  font-weight: 800;
-
- 
+  font-weight: 400;
+  font-size: 1.3rem;
+  width:100%;
 `;
 
 const Detail = styled.div`
@@ -68,33 +65,14 @@ const Titles = styled.div`
   padding: 16px;
   @media (max-width: 800px) {
     align-items: flex-start;
-    
   }
 `;
 const CartMovie = props => {
-  //   console.log(`cart movie: url("${props.url}")`);
+//   console.log(`cart movie: url("${props.url}")`);
   return (
-    <Cart>
+    <Cart onClick={props.onClick}>
+      <Image style={{ backgroundImage: `url("${props.url}")` }}/> 
       <MainHeader>{props.name}</MainHeader>
-      <Image style={{ backgroundImage: `url("${props.url}")` }}></Image>
-      <Titles>
-        <Detail>
-          <span className="name">Height:</span>
-          <span className="data"> {props.height}</span>
-        </Detail>
-        <Detail>
-          <span className="name">Weight:</span>
-          <span className="data"> {props.mass}</span>
-        </Detail>
-        <Detail>
-          <span className="name">Species:</span>
-          <span className="data"> {props.species}</span>
-        </Detail>
-        <Detail>
-          <span className="name">Home World:</span>
-          <span className="data"> {props.homeworld}</span>
-        </Detail>
-      </Titles>
     </Cart>
   );
 };
