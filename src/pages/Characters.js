@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import CharactersData from '../containers/Characters';
+import styled from "styled-components";
+import { withTheme } from "styled-components";
 
+const CharactersPage=styled.div`
+
+height:100vh;
+`;
 const Characters = () => {
     return (
-        <div>
-            Characters
-        </div>
+        <CharactersPage>
+            <CharactersData/>
+        </CharactersPage>
     )
 }
 
-export default Characters
+export default withTheme(Characters)

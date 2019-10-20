@@ -24,19 +24,29 @@ const EpisodeDetail = props => {
   const [title, setTitle] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const ep = props.match.params.episodeId;
+      let ep = props.match.params.episodeId;
       const result = await movies;
       if (result) {
         const episode = result.data.allEpisodes.edges.find(x => {
           // console.log(x.node.episodeId);
           return x.node.episodeId.toString() === ep;
         });
-        setMovie(episode.node);
-        setTitle(`Star Wars: Episode ${roman[ep]}`);
+        if (episode) {
+          setMovie(episode.node);
+          setTitle(`Star Wars: Episode ${roman[ep]}`);
+        }
+        else{
+          const episode = result.data.allEpisodes.edges.find(x => {
+            // console.log(x.node.episodeId);
+            return x.node.episodeId.toString() === '1';
+          });
+          setMovie(episode.node);
+          setTitle(`Star Wars: Episode ${roman[1]}`);
+        }
       }
     };
     fetchData();
-  }, [props,roman]);
+  }, [props, roman]);
   return (
     <EpisodesPage>
       {/* {console.log(movie)} */}
@@ -50,7 +60,7 @@ const EpisodeDetail = props => {
         director={movie && movie.director}
         date={movie && movie.releaseDate}
       />
-      <PeopleList/>
+      <PeopleList />
     </EpisodesPage>
   );
 };
