@@ -7,7 +7,7 @@ const Cart = styled.div`
   height: 80vh;
   background: red;
   margin: 3rem auto;
-  min-width: 250px;
+  min-width: 300px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -15,10 +15,11 @@ const Cart = styled.div`
   ${props => {
     return { ...props.theme.cards };
   }}
-  @media (max-width: 800px) {
-    width: 80%;
+  @media (max-width: 500px) {
+    width: 90%;
     height:80vh;
-   
+    /* padding:0; */
+    margin: 0 auto;
   }
 
   /* &:hover {
@@ -34,7 +35,7 @@ const Image = styled.div`
   min-width: 200px;
   padding:16px;
   @media (max-width: 800px) {
-    
+    height: 80%;
     margin:16px;
     border-radius: 12px;
   }

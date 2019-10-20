@@ -12,6 +12,10 @@ const ContainerBig = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 80%;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin: 0 auto;
+  }
 `;
 const Container = styled.div`
   width: 100%;
@@ -25,6 +29,7 @@ const Container = styled.div`
 const ContainerSmall = styled.div`
   width: 100%;
   display: flex;
+  min-width: 300px;
   flex-direction: column;
   @media (max-width: 800px) {
     margin: 0 auto;
