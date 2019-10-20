@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
-import { movies } from "../data/movies";
+import { movies } from "../data/movies2";
 import CartMovie from "../components/CartMovie";
 
 const MoviesList = styled.div`

@@ -37,6 +37,9 @@ export const lightTheme = {
     background: "#000",
     grid: "#3C4858",
     color: "#4BD5EE"
+  },
+  name:{
+    color:'inherit'
   }
 };
 
@@ -78,5 +81,8 @@ export const darkTheme = {
     background: "#000",
     grid: "#333",
     color: "#FFE300"
+  },
+  name:{
+    color:'#4BD5EE'
   }
 };
