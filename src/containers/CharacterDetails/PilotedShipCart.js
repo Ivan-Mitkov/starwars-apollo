@@ -88,7 +88,7 @@ const StarshipDetail = props => {
 
   return (
     <StarshipList>
-      {console.log(starships)}
+      {/* {console.log(starships)} */}
       {starships &&
         starships.map(x => {
           return (
