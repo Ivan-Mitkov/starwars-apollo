@@ -17,15 +17,7 @@ const ContainerBig = styled.div`
     margin: 0 auto;
   }
 `;
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  /* flex-direction:column; */
-  @media (max-width: 800px) {
-    flex-direction: column;
-    margin: 0 auto;
-  }
-`;
+
 const ContainerSmall = styled.div`
   width: 100%;
   display: flex;

@@ -70,7 +70,7 @@ const StarshipDetail = props => {
               }
             }
           }
-          console.log(starShipsNames);
+          // console.log(starShipsNames);
           setStarships(starShipsNames);
         }
       }
