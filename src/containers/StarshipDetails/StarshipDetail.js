@@ -7,8 +7,7 @@ import { allStarships } from "../../data/allStraships";
 import StarshipCart from "../../components/StarshipDetails/StarshipCart";
 import CharacterDetailTitle from "../../components/CharacterDetails/CharacterDetailTitle";
 
-import RadarChart from "../../components/StarshipDetails/RadarChart";
-import NivoRadarChart from "../../components/StarshipDetails/NivoRadarChart";
+import RadarChart from "../../components/StarshipDetails/ReactVisChart";
 
 const ContainerBig = styled.div`
   display: flex;
@@ -30,6 +29,25 @@ const ContainerSmall = styled.div`
     margin: 0 auto;
   }
 `;
+const StarshipTitle = styled.div`
+  line-height: 3rem;
+  height: 10vh;
+  border-bottom: 1px solid black;
+  width: 100%;
+  text-align: center;
+  h2 {
+    ${props => {
+      return { ...props.theme.name };
+    }}
+  }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    line-height: 1rem;
+    height: 10vh;
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+`;
 const StarshipDetail = props => {
   const [allStarshipsFromData, setAllStarshipsFromData] = useState(null);
   const [starship, setStarship] = useState(null);
@@ -41,7 +59,7 @@ const StarshipDetail = props => {
   const [maxHyperdriveRating, setMaxHyperdriveRating] = useState(null);
  
   const [data, setData] = useState(null);
-  const [nivoData, setNivoData] = useState(null);
+  const [maxData, setMaxData] = useState(null);
 
   useEffect(() => {
     const fetchDataStarshipDetails = async () => {
@@ -56,6 +74,7 @@ const StarshipDetail = props => {
         });
         // console.log(starship.node);
         if (starship) {
+          // console.log('starship',starship)
           setStarship(starship.node);
         }
         return result;
@@ -124,46 +143,40 @@ const StarshipDetail = props => {
       }
     };
     findMax();
-  }, [sameClassStarships]);
+  }, [sameClassStarships,starship]);
 
   useEffect(() => {
     const findData = async () => {
       const result = await allStarships;
       // console.log(starship)
       if (result && sameClassStarships) {
-        const data = [
+        const Range = {
+          name: starship.name,
+          cost: maxCost,
+          Crew:maxCrew,
+        
+          MaxAtmSpeed:maxAtmosphericSpeed,
+          HyperDRat: maxHyperdriveRating,
+          MaxMLh: maxMLPerHour
+        };
+        setMaxData(Range)
+        const DATA = [
           {
-            subject: "Cost",
-            A: starship.cost/10000,
-            fullMark: maxCost/10000
-          },
-          {
-            subject: "Crew",
-            A: starship.crew,
-            fullMark: maxCrew
-          },
-          {
-            subject: "Max Atm. Speed",
-            A: starship.maxAtmosphericSpeed/1000,
-            fullMark: maxAtmosphericSpeed/1000
-          },
-          {
-            subject: "HyperD Rat",
-            A: starship.hyperdriveRating,
-            fullMark: maxHyperdriveRating
-          },
-          {
-            subject: "Max ML/h",
-            A: starship.maxMLPerHour/100,
-            fullMark: maxMLPerHour/100
+            name: starship.name,
+            cost: starship.cost,
+            crew: starship.crew,
+        
+            maxAtmSpeed: starship.maxAtmosphericSpeed,
+            HyperDRat: starship.hyperdriveRating,
+            MaxMLh: starship.maxMLPerHour
           }
         ];
-        setData(data);
+        setData(DATA);
       }
     };
     findData();
   }, [
-    
+    starship,
     maxCost,
     maxMLPerHour,
     maxAtmosphericSpeed,
@@ -171,54 +184,10 @@ const StarshipDetail = props => {
     maxCrew,
     sameClassStarships
   ]);
-  useEffect(() => {
-    const findData = async () => {
-      const result = await allStarships;
-      if (result && sameClassStarships) {
-        const data = [
-          {
-            "A": "Cost",
-            "ship": starship.cost/10000,
-            "maxship": maxCost/10000,
-          },
-          {
-            "A": "Crew",
-            "ship": starship.crew,
-            "maxship": maxCrew,
-          },
-          {
-            "A": "Max Atm. Speed",
-            "ship": starship.maxAtmosphericSpeed/1000,
-            "maxship": maxAtmosphericSpeed/1000,
-          },
-          {
-            "A": "HyperD Rat",
-            "ship": starship.hyperdriveRating,
-            "maxship": maxHyperdriveRating,
-          },
-          {
-            "A": "Max ML/h",
-            "ship": starship.maxMLPerHour/100,
-            "maxship": maxMLPerHour/100,
-          }
-        ]
-        setNivoData(data);
-      }
-    };
-    findData();
-  }, [
-    
-    maxCost,
-    maxMLPerHour,
-    maxAtmosphericSpeed,
-    maxHyperdriveRating,
-    maxCrew,
-    sameClassStarships
-  ]);
-
+ 
   return (
     <>
-      {console.log(data)}
+     
       <CharacterDetailTitle name={starship && starship.name} />
       <ContainerBig>
         {/* <Container> */}
@@ -234,8 +203,12 @@ const StarshipDetail = props => {
           />
         </ContainerSmall>
         <ContainerSmall>
-          {data ? <RadarChart data={data} /> : null}
-          {nivoData ? <NivoRadarChart data={nivoData} /> : null}
+        <StarshipTitle>
+            <h2>{starship&&starship.name}</h2>
+          </StarshipTitle>
+          {data&&maxData ? <RadarChart data={data} range={maxData} /> : null}
+          {/* {console.log('data:',data)}
+      {console.log("maxData",maxData)} */}
         </ContainerSmall>
       </ContainerBig>
     </>
