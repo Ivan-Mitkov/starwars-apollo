@@ -1,92 +1,46 @@
-import React from "react";
+import React,{useEffect,useState} from 'react';
+import {
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer
+} from 'recharts';
 
-import { ResponsiveRadar } from '@nivo/radar'
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
-const MyResponsiveRadar = () => (
-    <ResponsiveRadar
-        data={[
-            {
-              "taste": "fruity",
-              "chardonay": 89,
-              "carmenere": 60,
-              "syrah": 56
-            },
-            {
-              "taste": "bitter",
-              "chardonay": 72,
-              "carmenere": 104,
-              "syrah": 62
-            },
-            {
-              "taste": "heavy",
-              "chardonay": 70,
-              "carmenere": 88,
-              "syrah": 103
-            },
-            {
-              "taste": "strong",
-              "chardonay": 113,
-              "carmenere": 116,
-              "syrah": 35
-            },
-            {
-              "taste": "sunny",
-              "chardonay": 93,
-              "carmenere": 98,
-              "syrah": 57
-            }
-          ]}
-        keys={[ 'chardonay', 'carmenere', 'syrah' ]}
-        indexBy="taste"
-        maxValue="auto"
-        margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
-        curve="linearClosed"
-        borderWidth={2}
-        borderColor={{ from: 'color' }}
-        gridLevels={5}
-        gridShape="circular"
-        gridLabelOffset={36}
-        enableDots={true}
-        dotSize={10}
-        dotColor={{ theme: 'background' }}
-        dotBorderWidth={2}
-        dotBorderColor={{ from: 'color' }}
-        enableDotLabel={true}
-        dotLabel="value"
-        dotLabelYOffset={-12}
-        colors={{ scheme: 'nivo' }}
-        fillOpacity={0.25}
-        blendMode="multiply"
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-        isInteractive={true}
-        legends={[
-            {
-                anchor: 'top-left',
-                direction: 'column',
-                translateX: -50,
-                translateY: -40,
-                itemWidth: 80,
-                itemHeight: 20,
-                itemTextColor: '#999',
-                symbolSize: 12,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
-        ]}
-    />
-)
+const data = [
+  {
+    subject: 'Cost', A: 149999, fullMark:  320000,
+  },
+  {
+    subject: 'Crew', A: 1,  fullMark: 3,
+  },
+  {
+    subject: 'Max Atm. Speed', A: 1050,  fullMark: 1500,
+  },
+  {
+    subject: 'HyperD Rat', A:1,  fullMark:6,
+  },
+  {
+    subject: 'Max ML/h', A: 100,  fullMark: 120,
+  },
+  
+];
 
-export default MyResponsiveRadar
+const  Example =(props)=> {
+  // static jsfiddleUrl = 'https://jsfiddle.net/alidingling/6ebcxbx4/';
+    // const[data,setData]=useState(null)
+    useEffect(()=>{
+      console.log(props.data)
+      // setData(props.data)
+    },[props.data])
+    return (
+      <ResponsiveContainer >
+      <RadarChart cx={300} cy={250} outerRadius={150} width={500} height={500} data={props.data}>
+        <PolarGrid />
+        <PolarAngleAxis dataKey="subject"  />
+       
+        <PolarRadiusAxis domain={[0,'auto']} />
+        <Radar name="Mike" dataKey="A"  stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+      </RadarChart>
+      </ResponsiveContainer >
+
+    );
+  
+}
+export default  Example
