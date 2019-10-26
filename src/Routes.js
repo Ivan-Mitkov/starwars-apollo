@@ -6,7 +6,7 @@ import Episodes from "./pages/Episodes"
 import EpisodeDetail from "./pages/Episode.detail"
 import CharacterDetail from "./pages/Characters.details"
 import Starship from "./pages/Starship"
-import Login from "./pages/login"
+import Login from "./pages/Login"
 
 const Routes = () => {
   return (

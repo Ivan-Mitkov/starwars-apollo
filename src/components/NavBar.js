@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useState} from "react";
+import { Link,Redirect } from "react-router-dom";
 import styled from "styled-components";
 // import classes from "classnames";
 import { withTheme } from "styled-components";
@@ -25,7 +25,7 @@ const SwapButton = styled.div`
     font-size: 2rem;
     flex-grow: 1;
     margin-left: 8px;
-    };
+  }
 `;
 
 const LinkDiv = styled.div`
@@ -44,16 +44,27 @@ const LinkDiv = styled.div`
   justify-content: space-between;
   @media (min-width: 500px) {
     justify-content: space-evenly;
-    }
+  }
 `;
 
-const NavBar = ({ theme, toggleTheme }) => {
+const NavBar = ({ theme, toggleTheme,isLogged,handleLogout }) => {
+ console.log(isLogged)
+ 
   return (
-    <Navbar >
+    <Navbar>
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>
       <LinkDiv>
         <Link to={"/episodes"}>Episodes</Link>
         <Link to={"/characters"}>Characters</Link>
+      </LinkDiv>
+      <LinkDiv>
+        {isLogged ? (
+          <Link onClick={handleLogout} to={"/login"}>
+            Sign Out
+          </Link>
+        ) : (
+          <Link to={"/"}>Sign in</Link>
+        )}
       </LinkDiv>
     </Navbar>
   );
