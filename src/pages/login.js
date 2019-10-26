@@ -24,7 +24,7 @@ export default function Login() {
         // console.log('on completed login',signIn)
         localStorage.setItem('token', signIn);
         client.writeData({ data: { isLoggedIn: true } });
-        // console.log('client is logged in',client.isLoggedIn)
+        console.log('client is logged in',client.isLoggedIn)
         // console.log(login)
       }
     }
@@ -32,8 +32,6 @@ export default function Login() {
 
   if (loading) return "Loading";
   if (error) return <p>An error occurred</p>;
-  if(signIn){
-    // console.log(signIn) 
-  }
+ 
   return <LoginForm login={signIn} />;
 }

@@ -48,22 +48,28 @@ const LinkDiv = styled.div`
 `;
 
 const NavBar = ({ theme, toggleTheme,isLogged,handleLogout }) => {
- console.log(isLogged)
  
   return (
     <Navbar>
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>
-      <LinkDiv>
-        <Link to={"/episodes"}>Episodes</Link>
-        <Link to={"/characters"}>Characters</Link>
-      </LinkDiv>
+     
       <LinkDiv>
         {isLogged ? (
+         
+           <LinkDiv>
+           <Link to={"/episodes"}>Episodes</Link>
+           <Link to={"/characters"}>Characters</Link>
+         
           <Link onClick={handleLogout} to={"/login"}>
             Sign Out
           </Link>
+          </LinkDiv>
         ) : (
-          <Link to={"/"}>Sign in</Link>
+          <LinkDiv>
+          <Link  to={"/login"}>
+            Sign In
+          </Link>
+          </LinkDiv>
         )}
       </LinkDiv>
     </Navbar>
