@@ -77,7 +77,7 @@ const StarshipDetail = props => {
     };
     fetchDataStarshipOfPersons();
     fetchDataStarshipDetails();
-  }, [pilotedShips,props.match.params.characterId]);
+  }, [props]);
 
 
 

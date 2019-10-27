@@ -17,8 +17,9 @@ const IS_LOGGED_IN = gql`
 const Home = ({ toggleTheme }) => {
   const [log, setLog] = useState(false);
   const handleLogout = () => {
-    client.isLoggedIn = false;
+    client.writeData({ data: { isLoggedIn: false, me: null } });
     localStorage.setItem("token", "");
+    localStorage.setItem("me",null);
   };
   function IsLoggedIn() {
     const { data } = useQuery(IS_LOGGED_IN);
