@@ -34,9 +34,16 @@ export const lightTheme = {
     color: "#4BD5EE"
   },
   radar: {
-    background: "#000",
-    grid: "#3C4858",
-    color: "#4BD5EE"
+    labels: {
+      fontSize: '14',
+      color: "#4BD5EE",
+      stroke: "#3C4858",
+    },
+    fill: "#000",
+    stroke: "#3C4858",
+    strokeWidth: '2',
+    color: "#4BD5EE",
+    fontSize: '14',
   },
   name:{
     color:'inherit'
@@ -78,8 +85,9 @@ export const darkTheme = {
     color: "#FFE300"
   },
   radar: {
-    background: "#000",
-    grid: "#333",
+    fill: "#000",
+    stroke: "#333",
+    fontSize: '14',
     color: "#FFE300"
   },
   name:{

@@ -48,6 +48,12 @@ const StarshipTitle = styled.div`
     width: 100%;
   }
 `;
+const RadarContainer=styled.div`
+ ${props => {
+    return { ...props.theme.radar };
+  }}
+
+`;
 const StarshipDetail = props => {
   const [allStarshipsFromData, setAllStarshipsFromData] = useState(null);
   const [starship, setStarship] = useState(null);
@@ -206,7 +212,10 @@ const StarshipDetail = props => {
         <StarshipTitle>
             <h2>{starship&&starship.name}</h2>
           </StarshipTitle>
+          <RadarContainer>
           {data&&maxData ? <RadarChart data={data} range={maxData} /> : null}
+          </RadarContainer>
+         
           {/* {console.log('data:',data)}
       {console.log("maxData",maxData)} */}
         </ContainerSmall>
