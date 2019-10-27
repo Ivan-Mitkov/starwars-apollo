@@ -56,7 +56,7 @@ client
         me: result
       }
     });
-    console.log('then',(localStorage.getItem('me')))
+    // console.log('then',(localStorage.getItem('me')))
     
   })
   .catch(err => {
@@ -69,11 +69,11 @@ client
       }
     });
 
-    console.log('err',(localStorage.getItem('me')))
+    // console.log('err',(localStorage.getItem('me')))
   }
   )
   .finally(() => {    
-    console.log('client finally',localStorage.getItem('me'));
+    // console.log('client finally',localStorage.getItem('me'));
   });
 
 export default client;

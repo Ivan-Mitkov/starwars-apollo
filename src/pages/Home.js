@@ -23,11 +23,11 @@ const Home = ({ toggleTheme }) => {
   };
   function IsLoggedIn() {
     const { data } = useQuery(IS_LOGGED_IN);
-    console.log("is logged in", data.isLoggedIn);
+    // console.log("is logged in", data.isLoggedIn);
     return data.isLoggedIn;
   }
   const isLogged = IsLoggedIn();
-  console.log("home", isLogged);
+  // console.log("home", isLogged);
   useEffect(() => {
     setLog(isLogged);
   }, [isLogged]);
