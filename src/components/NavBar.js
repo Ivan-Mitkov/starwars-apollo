@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { Link,Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 // import classes from "classnames";
 import { withTheme } from "styled-components";
@@ -48,7 +48,7 @@ const LinkDiv = styled.div`
 `;
 
 const NavBar = ({ theme, toggleTheme,isLogged,handleLogout }) => {
- 
+ console.log(isLogged)
   return (
     <Navbar>
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>

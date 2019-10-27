@@ -1,6 +1,6 @@
 import React from "react";
 import { format } from "d3-format";
-import { RadarChart,FlexibleXYPlot  } from "react-vis";
+import { RadarChart  } from "react-vis";
 
 
 

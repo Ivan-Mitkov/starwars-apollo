@@ -54,7 +54,7 @@ const MovieList = props => {
       }
     };
     fetchData();
-  }, []);
+  }, [props.match.params.episodeId]);
   const onClickHandle = id => {
     props.history.push(`/characters/${id}`);
   };

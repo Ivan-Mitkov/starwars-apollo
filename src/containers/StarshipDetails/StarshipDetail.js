@@ -81,7 +81,7 @@ const StarshipDetail = props => {
       }
     };
     fetchDataStarshipDetails();
-  }, []);
+  }, [props.match.params.starshipId]);
   useEffect(() => {
     const fetchAllStarshipsSameClass = async () => {
       const result = await allStarships;

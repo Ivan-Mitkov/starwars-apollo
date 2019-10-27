@@ -2,11 +2,8 @@ import React from "react";
 // import { ApolloClient } from "apollo-client";
 // import { InMemoryCache } from "apollo-cache-inmemory";
 // import { HttpLink } from "apollo-link-http";
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
+import { ApolloProvider } from "@apollo/react-hooks";
 
-import gql from "graphql-tag";
-
-import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "./global";

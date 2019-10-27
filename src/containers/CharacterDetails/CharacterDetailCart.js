@@ -72,7 +72,7 @@ const CharacterDetail = props => {
       }
     };
     fetchData();
-  }, []);
+  }, [props.match.params.characterId]);
   return (
     <>
       <CharacterDetailTitle name={character && character.name} />

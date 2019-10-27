@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route,Redirect  } from "react-router-dom";
+import { Switch, Route  } from "react-router-dom";
 
 import Characters from "./pages/Characters"
 import Episodes from "./pages/Episodes"
@@ -15,7 +15,7 @@ const Routes = () => {
       <Route  component={EpisodeDetail} path="/episodes/:episodeId" />
       <Route  component={CharacterDetail} path="/characters/:characterId" />
       <Route  component={Starship} path="/starships/:starshipId" />
-      <Route exact component={Login} path="/login" />
+      {/* <Route exact component={Login} path="/login" /> */}
       <Route  exact component={Episodes} path="/episodes" />
       <Route  component={Episodes} path="/" />
 

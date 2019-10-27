@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -14,21 +14,23 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
+const Home = ({ toggleTheme }) => {
+  const [log, setLog] = useState(false);
+  const handleLogout = () => {
+    client.isLoggedIn = false;
+    localStorage.setItem("token", "");
+  };
+  function IsLoggedIn() {
+    const { data } = useQuery(IS_LOGGED_IN);
+    console.log("is logged in", data.isLoggedIn);
+    return data.isLoggedIn;
+  }
+  const isLogged = IsLoggedIn();
+  console.log("home", isLogged);
+  useEffect(() => {
+    setLog(isLogged);
+  }, [isLogged]);
 
-
-const Home = ({toggleTheme}) => {
-    const handleLogout = () => {
-        client.isLoggedIn = false;
-        localStorage.setItem("token", "");
-      };
-      function IsLoggedIn() {
-        const { data } = useQuery(IS_LOGGED_IN);
-        console.log("is logged in", data.isLoggedIn);
-        return data.isLoggedIn;
-      }
-      const isLogged=IsLoggedIn();
-      console.log(isLogged)
-      
   return (
     <BrowserRouter>
       <NavBar
@@ -37,7 +39,7 @@ const Home = ({toggleTheme}) => {
         handleLogout={handleLogout}
       />
       {/* <Routes /> */}
-      {IsLoggedIn ? <Routes /> : <Login />}
+      {isLogged ? <Routes /> : <Login />}
     </BrowserRouter>
   );
 };

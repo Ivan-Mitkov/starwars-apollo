@@ -59,7 +59,7 @@ const StarshipDetail = props => {
             for (let y in result.data.allStarships.edges) {
               // console.log(result.data.allStarships.edges[y].node.id)
               if (
-                result.data.allStarships.edges[y].node.id == pilotedShips[x]
+                result.data.allStarships.edges[y].node.id === pilotedShips[x]
               ) {
                 const newShip = {
                   id: result.data.allStarships.edges[y].node.id,
@@ -77,7 +77,7 @@ const StarshipDetail = props => {
     };
     fetchDataStarshipOfPersons();
     fetchDataStarshipDetails();
-  }, [props]);
+  }, [pilotedShips,props.match.params.characterId]);
 
 
 

@@ -23,8 +23,8 @@ export default function Login() {
       onCompleted( {signIn} ) {
         // console.log('on completed login',signIn)
         localStorage.setItem('token', signIn);
-        client.writeData({ data: { isLoggedIn: true } });
-        console.log('client is logged in',client.isLoggedIn)
+        client.writeData({ data: { isLoggedIn: true,me:true } });
+        console.log('client is logged in')
         // console.log(login)
       }
     }
