@@ -120,7 +120,7 @@ const MovieList = props => {
                 key={edges && m.node.id}
                 url={edges && m.node.image}
                 name={edges && m.node.name}
-                onClick={() => onClickHandle(m.id)}
+                onClick={() => onClickHandle(m.node.id)}
               />
             );
           })}
