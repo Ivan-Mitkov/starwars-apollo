@@ -48,13 +48,13 @@ const LinkDiv = styled.div`
 `;
 
 const NavBar = ({ theme, toggleTheme,isLogged,handleLogout }) => {
-//  console.log(isLogged)
+ console.log(isLogged)
   return (
     <Navbar>
       <SwapButton onClick={toggleTheme}>SWAPP</SwapButton>
      
       <LinkDiv>
-        {isLogged ? (
+        {isLogged===true ? (
          
            <LinkDiv>
            <Link to={"/episodes"}>Episodes</Link>
