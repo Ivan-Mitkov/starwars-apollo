@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
-import { allPeople as movies } from "../data/allPeople";
 import People from "../components/EpisodeDetail/PersonEpisodeDetail";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
@@ -15,7 +14,7 @@ const PeopleList = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-between;
-  height: 100vh;
+  /* height: 100vh; */
   padding: 0 5rem;
   margin: 3rem auto;
 
@@ -24,10 +23,18 @@ const PeopleList = styled.div`
     padding: 2rem;
   }
 `;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
+const ButtonDiv = styled.div`
+  padding: 20px;
+`;
 const ALL_PEOPLE = gql`
-  query allPeople($first: Int!) {
-    allPeople(first: $first) {
+  query allPeople($first: Int!, $after: String) {
+    allPeople(first: $first, after: $after) {
       edges {
         node {
           id
@@ -36,95 +43,83 @@ const ALL_PEOPLE = gql`
         }
         cursor
       }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      totalCount
     }
   }
 `;
 
 const MovieList = props => {
-  ///from files
-  const [movie, setMovie] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await movies;
-      if (result) {
-        // console.log(result);
-        const personsInEpisode = result.data.allPeople.edges
-          .map(x => x.node)
-          .slice(0, 12);
-        // const searchedMovie=result.data.allEpisodes.edges.find()
-        // console.log(personsInEpisode);
-        setMovie(personsInEpisode);
-      }
-    };
-    fetchData();
-  }, []);
   const onClickHandle = id => {
     props.history.push(`/characters/${id}`);
   };
 
   ///from Apolo
   const { loading, error, data, fetchMore } = useQuery(ALL_PEOPLE, {
-    variables: { first: 7 }
+    variables: { first: 12 }
   });
   if (loading) return <Loading />;
-  if (error){
-    console.log(error)
+  if (error) {
+    console.log(error);
     return <p>Error on getting all people</p>;
-  } 
+  }
 
   const {
-    allPeople: { edges, hasMore, cursor }
+    allPeople: { edges, pageInfo }
   } = data;
-  console.log(edges);
+  console.log("allPeople data:", edges);
 
-  // const loadMoreCars = () => {
-  //   fetchMore({
-  //     variables: {
-  //       after: cursor
-  //     },
-  //     updateQuery: (prev, { fetchMoreResult: { allPeople } }) => {
-  //       if (!allPeople.edges.length) {
-  //         return prev;
-  //       }
+  const loadMorePeople = () => {
+    fetchMore({
+      variables: {
+        after: pageInfo.endCursor
+      },
 
-  //       return {
-  //         allPeople: {
-  //           ...allPeople,
-  //           people: [...prev.allPeople.edges, ...allPeople.edges]
-  //         }
-  //       };
-  //     }
-  //   });
-  // };
+      updateQuery: (prev, { fetchMoreResult: { allPeople } }) => {
+        console.log("update allPeople", allPeople);
+        if (!allPeople.edges.length) {
+          return prev;
+        }
+        // console.log("prev", prev.allPeople.edges);
+        // console.log("currenet", allPeople.edges);
+        const newEdges = allPeople.edges;
+       
+        const result ={allPeople: {
+         ...allPeople,
+          edges: [...prev.allPeople.edges, ...newEdges]
+        }};
+        // console.log(result);
+        return result;
+      }
+    });
+  };
   return (
     <>
-      {/* <PeopleList>
-        {movie &&
-          movie.map((m, i) => {
-            return (
-              <People
-                key={movie && m.id}
-                url={movie && m.image}
-                name={movie && m.name}
-                onClick={() => onClickHandle(m.id)}
-              />
-            );
-          })}
-      </PeopleList> */}
-      <PeopleList>
-        {edges &&
-          edges.map((m, i) => {
-            // console.log(m)
-            return (
-              <People
-                key={edges && m.node.id}
-                url={edges && m.node.image}
-                name={edges && m.node.name}
-                onClick={() => onClickHandle(m.node.id)}
-              />
-            );
-          })}
-      </PeopleList>
+      <Container>
+        {/* {console.log("render: ", data)} */}
+        <div>
+          <PeopleList>
+            {edges &&
+              edges.map((m, i) => {
+                // console.log(m);
+                return (
+                  <People
+                    key={edges && m.node.id}
+                    url={edges && m.node.image}
+                    name={edges && m.node.name}
+                    onClick={() => onClickHandle(m.node.id)}
+                  />
+                );
+              })}
+          </PeopleList>
+        </div>
+       {pageInfo.hasNextPage&&( <ButtonDiv>
+          <button onClick={loadMorePeople}>Load More</button>
+       </ButtonDiv>)}
+      </Container>
     </>
   );
 };

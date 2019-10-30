@@ -6,14 +6,15 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
-  uri: "https://swapp.st6.io/graphql"
+  // uri: "https://swapp.st6.io/graphql"
+  uri: "http://softuni-swapp-212366186.eu-west-1.elb.amazonaws.com/graphql"
   // Additional fetch options like `credentials` or `headers`
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
   const token = localStorage.getItem("token");
-    console.log("token: ", token);
+    // console.log("token: ", token);
   operation.setContext({
     headers: {
       authorization: token ? `Bearer ${token}` : ""
@@ -43,7 +44,7 @@ const client = new ApolloClient({
   ]),
   cache
 });
-console.log("client token", localStorage.getItem("token"));
+// console.log("client token", localStorage.getItem("token"));
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem("token")
