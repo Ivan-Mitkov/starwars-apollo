@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Loading from "../components/Loading";
+
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
-import { movies } from "../data/movies2";
+// import { movies } from "../data/movies2";
 import CartMovie from "../components/CartMovie";
 
 const MoviesList = styled.div`
@@ -19,24 +23,57 @@ const MoviesList = styled.div`
     padding: 2rem;
   }
 `;
-const MovieList = (props) => {
-  const [movie, setMovie] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await movies;
-      if (result) {
-        // console.log(result);
-        setMovie(result.data.allEpisodes.edges);
-      }
-    };
-    fetchData();
-  }, []);
-  const onClickHandle = id => {props.history.push(`/episodes/${id}`)};
-  const formatCrawl = (i, words) => {
-    if (movie) {
 
+const ALL_EPISODES = gql`
+  query allEpisodes($first: Int!) {
+    allEpisodes(first: $first) {
+      edges {
+        node {
+          title
+          director
+          episodeId
+          releaseDate
+          openingCrawl
+          image
+        }
+      }
+    }
+  }
+`;
+const MovieList = props => {
+  // const [edges, setMovie] = useState(null);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await movies;
+  //     if (result) {
+  //       // console.log(result);
+  //       setMovie(result.data.allEpisodes.edges);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+///from Apolo
+const { loading, error, data } = useQuery(ALL_EPISODES, {
+  variables: { first: 7 }
+});
+if (loading) return <Loading />;
+if (error) {
+  console.log(error);
+  return <p>Error on getting all movies</p>;
+}
+
+const {
+  allEpisodes: { edges, cursor }
+} = data;
+// console.log("allEpisodes data:", edges);
+
+  const onClickHandle = id => {
+    props.history.push(`/episodes/${id}`);
+  };
+  const formatCrawl = (i, words) => {
+    if (edges) {
       return (
-        movie[i].node.openingCrawl
+        edges[i].node.openingCrawl
           .split(" ")
           .slice(0, words)
           .join(" ") + "..."
@@ -47,15 +84,15 @@ const MovieList = (props) => {
   return (
     <>
       <MoviesList>
-        {movie &&
-          movie.map((m, i) => {
+        {edges &&
+          edges.map((m, i) => {
             return (
               <CartMovie
-                key={movie && m.node.episodeId}
-                url={movie && m.node.image}
-                title={movie && m.node.title}
-                openingCrawl={movie && formatCrawl(i, 15)}
-                onClick={()=>onClickHandle(m.node.episodeId)}
+                key={edges && m.node.episodeId}
+                url={edges && m.node.image}
+                title={edges && m.node.title}
+                openingCrawl={edges && formatCrawl(i, 15)}
+                onClick={() => onClickHandle(m.node.episodeId)}
               />
             );
           })}
@@ -64,4 +101,4 @@ const MovieList = (props) => {
   );
 };
 
-export default withRouter( withTheme(MovieList));
+export default withRouter(withTheme(MovieList));
