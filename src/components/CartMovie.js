@@ -37,9 +37,9 @@ const Text=styled.div`
 
 `;
 const CartMovie = props => {
-//   console.log(`cart movie: url("${props.url}")`);
+  // console.log(`cart movie: ${props.id}`);
   return (
-    <Cart onClick={props.onClick}>
+    <Cart onClick={props.onClick} id={props.id}>
       <Image style={{ backgroundImage: `url("${props.url}")` }}></Image>
       <MainHeader>{props.title}</MainHeader>
       <Text>{props.openingCrawl}</Text>

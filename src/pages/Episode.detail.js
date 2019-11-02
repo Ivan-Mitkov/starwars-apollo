@@ -16,6 +16,7 @@ const ALL_EPISODES = gql`
     allEpisodes(first: $first) {
       edges {
         node {
+          id
           title
           director
           episodeId
@@ -32,6 +33,7 @@ const EpisodesPage = styled.div`
   height: 100vh;
 `;
 const EpisodeDetail = props => {
+  // console.log('episode detail:',props)
   const [movie, setMovie] = useState(null);
   const [title, setTitle] = useState(null);
   const roman = {
@@ -77,14 +79,14 @@ const EpisodeDetail = props => {
   });
   if (loading) return <Loading />;
   if (error) {
-    console.log(error);
+    // console.log(error);
     return <p>Error on getting all movies</p>;
   }
 
   const {
     allEpisodes: { edges, cursor }
   } = data;
-
+// console.log(movie)
   return (
     <EpisodesPage>
       {/* {console.log(movie)} */}
@@ -98,7 +100,7 @@ const EpisodeDetail = props => {
         director={movie && movie.director}
         date={movie && movie.releaseDate}
       />
-      <PeopleList />
+      <PeopleList id={movie&&movie.id}/>
     </EpisodesPage>
   );
 };

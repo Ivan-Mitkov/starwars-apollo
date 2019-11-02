@@ -6,8 +6,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
-  // uri: "https://swapp.st6.io/graphql"
-  uri: "http://softuni-swapp-212366186.eu-west-1.elb.amazonaws.com/graphql"
+  uri: "https://swapp.st6.io/graphql"
+  // uri: "http://softuni-swapp-212366186.eu-west-1.elb.amazonaws.com/graphql"
   // Additional fetch options like `credentials` or `headers`
 });
 

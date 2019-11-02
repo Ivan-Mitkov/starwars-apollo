@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 
 
 export default class LoginForm extends Component {
-  state = { email: '',password:'' };
+  state = { email: 'demo@st6.io',password:'demo1234' };
 
   onChangeEmail = event => {
     const email = event.target.value;
-    // console.log(email)
+   
     this.setState(s => ({ email }));
   };
   onChangePass = event => {
     const password = event.target.value;
-    // console.log(password)
+  
     this.setState(s => ({ password }));
   };
 
@@ -32,6 +32,7 @@ export default class LoginForm extends Component {
             placeholder="Email"
             data-testid="login-input"
             onChange={this.onChangeEmail}
+            value='demo@st6.io'
           />
           <input
             required
@@ -39,6 +40,7 @@ export default class LoginForm extends Component {
             name="password"
             placeholder="password"
             data-testid="login-input"
+            value="demo1234"
             onChange={this.onChangePass}
           />
           <button type="submit">Log in</button>

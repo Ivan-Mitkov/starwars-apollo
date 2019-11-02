@@ -60,7 +60,7 @@ const Titles = styled.div`
   
 `;
 const CartMovie = props => {
-  //   console.log(`cart movie: url("${props.url}")`);
+    // console.log(`cart episode detail movie: ("${props.url}")`);
   return (
     <Cart >
       <Image style={{ backgroundImage: `url("${props.url}")` }}></Image>

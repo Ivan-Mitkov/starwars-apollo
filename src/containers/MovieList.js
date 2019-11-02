@@ -29,6 +29,7 @@ const ALL_EPISODES = gql`
     allEpisodes(first: $first) {
       edges {
         node {
+          id
           title
           director
           episodeId
@@ -52,23 +53,24 @@ const MovieList = props => {
   //   };
   //   fetchData();
   // }, []);
-///from Apolo
-const { loading, error, data } = useQuery(ALL_EPISODES, {
-  variables: { first: 7 }
-});
-if (loading) return <Loading />;
-if (error) {
-  console.log(error);
-  return <p>Error on getting all movies</p>;
-}
+  ///from Apolo
+  const { loading, error, data } = useQuery(ALL_EPISODES, {
+    variables: { first: 7 }
+  });
+  if (loading) return <Loading />;
+  if (error) {
+    console.log(error);
+    return <p>Error on getting all movies</p>;
+  }
 
-const {
-  allEpisodes: { edges, cursor }
-} = data;
-// console.log("allEpisodes data:", edges);
+  const {
+    allEpisodes: { edges, cursor }
+  } = data;
+  console.log("allEpisodes data:", edges);
 
-  const onClickHandle = id => {
-    props.history.push(`/episodes/${id}`);
+  const onClickHandle = (epId) => {
+
+    props.history.push(`/episodes/${epId}`);
   };
   const formatCrawl = (i, words) => {
     if (edges) {
