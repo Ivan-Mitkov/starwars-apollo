@@ -1,5 +1,5 @@
 import React from 'react'
-import StashipDetailCart from '../containers/StarshipDetails/StarshipDetail';
+import StashipDetailCart from '../containers/StarshipDetails/StarshipDetailApollo';
 
 const Starship = () => {
     return (
