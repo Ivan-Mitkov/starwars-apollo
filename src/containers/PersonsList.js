@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
@@ -9,9 +9,9 @@ import gql from "graphql-tag";
 import Loading from "../components/Loading";
 
 const ALL_PEOPLE_IN_EPISODE = gql`
-  query episode($first: Int!, $id: ID!,$after:String) {
+  query episode($first: Int!, $id: ID!, $after: String) {
     episode(id: $id) {
-      people(first: $first,after:$after) {
+      people(first: $first, after: $after) {
         edges {
           node {
             id
@@ -71,7 +71,7 @@ const MovieList = props => {
     return <p>Error on getting all movies</p>;
   }
 
-  console.log(data.episode.people.edges);
+  // console.log(data.episode.people.edges);
   const {
     episode: {
       people: { edges, pageInfo }
@@ -83,31 +83,30 @@ const MovieList = props => {
       variables: {
         after: pageInfo.endCursor
       },
-      
+
       updateQuery: (prev, { fetchMoreResult: { episode } }) => {
-        console.log(pageInfo.endCursor)
+        // console.log(pageInfo.endCursor);
         // console.log("update people", episode);
         if (!episode.people.edges.length) {
           return prev;
         }
-        console.log("prev", prev.episode.people.edges);
+        // console.log("prev", prev.episode.people.edges);
         // console.log("currenet", allPeople.edges);
         const newEdges = episode.people.edges;
-        console.log("prev page info", prev.episode.people.pageInfo);
-        console.log("prev page info", prev.episode.people.pageInfo);
-        console.log("new edges", newEdges);
+        // console.log("prev page info", prev.episode.people.pageInfo);
+        // console.log("prev page info", prev.episode.people.pageInfo);
+        // console.log("new edges", newEdges);
         const result = {
           episode: {
             ...episode,
             people: {
               ...prev.episode.people,
-              pageInfo:{...episode.people.pageInfo},
-              edges: [...prev.episode.people.edges, ...newEdges],
-              
+              pageInfo: { ...episode.people.pageInfo },
+              edges: [...prev.episode.people.edges, ...newEdges]
             }
           }
         };
-        console.log("result", result);
+        // console.log("result", result);
         return result;
       }
     });
@@ -115,7 +114,7 @@ const MovieList = props => {
   return (
     <>
       <Container>
-        {console.log("render: ", data)}
+        {/* {console.log("render: ", data)} */}
         <div>
           <PeopleList>
             {edges &&
@@ -131,7 +130,7 @@ const MovieList = props => {
               })}
           </PeopleList>
         </div>
-        {console.log(pageInfo)}
+        {/* {console.log(pageInfo)} */}
         {pageInfo.hasNextPage && (
           <ButtonDiv>
             <button onClick={loadMorePeople}>Load More</button>

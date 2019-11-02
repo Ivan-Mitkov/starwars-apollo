@@ -70,7 +70,7 @@ const MovieList = props => {
   const {
     allPeople: { edges, pageInfo }
   } = data;
-  console.log("allPeople data:", edges);
+  // console.log("allPeople data:", edges);
 
   const loadMorePeople = () => {
     fetchMore({
@@ -79,7 +79,7 @@ const MovieList = props => {
       },
 
       updateQuery: (prev, { fetchMoreResult: { allPeople } }) => {
-        console.log("update allPeople", allPeople);
+        // console.log("update allPeople", allPeople);
         if (!allPeople.edges.length) {
           return prev;
         }

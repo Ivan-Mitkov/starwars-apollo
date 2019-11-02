@@ -64,9 +64,9 @@ const MovieList = props => {
   }
 
   const {
-    allEpisodes: { edges, cursor }
+    allEpisodes: { edges }
   } = data;
-  console.log("allEpisodes data:", edges);
+  // console.log("allEpisodes data:", edges);
 
   const onClickHandle = (epId) => {
 

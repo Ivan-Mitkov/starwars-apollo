@@ -83,9 +83,7 @@ const EpisodeDetail = props => {
     return <p>Error on getting all movies</p>;
   }
 
-  const {
-    allEpisodes: { edges, cursor }
-  } = data;
+  
 // console.log(movie)
   return (
     <EpisodesPage>
