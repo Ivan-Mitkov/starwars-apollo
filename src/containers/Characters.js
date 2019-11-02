@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 import People from "../components/EpisodeDetail/PersonEpisodeDetail";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
+import Button from '../components/ButtonLoadMore';
 
 const PeopleList = styled.div`
   width: 100%;
@@ -117,7 +118,7 @@ const MovieList = props => {
           </PeopleList>
         </div>
        {pageInfo.hasNextPage&&( <ButtonDiv>
-          <button onClick={loadMorePeople}>Load More</button>
+          <Button text='Load More' onClick={loadMorePeople}/>
        </ButtonDiv>)}
       </Container>
     </>

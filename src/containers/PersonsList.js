@@ -7,6 +7,7 @@ import People from "../components/EpisodeDetail/PersonEpisodeDetail";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
+import Button from "../components/ButtonLoadMore";
 
 const ALL_PEOPLE_IN_EPISODE = gql`
   query episode($first: Int!, $id: ID!, $after: String) {
@@ -133,7 +134,7 @@ const MovieList = props => {
         {/* {console.log(pageInfo)} */}
         {pageInfo.hasNextPage && (
           <ButtonDiv>
-            <button onClick={loadMorePeople}>Load More</button>
+            <Button text="Load More" onClick={loadMorePeople} />
           </ButtonDiv>
         )}
       </Container>
