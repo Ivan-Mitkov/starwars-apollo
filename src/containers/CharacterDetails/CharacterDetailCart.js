@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
 
-import { allPeople } from "../../data/allPeople";
+// import { allPeople } from "../../data/allPeople";
 import CartCharacterDetail from "../../components/CharacterDetails/CharacterDetailCart";
 import CharacterDetailTitle from "../../components/CharacterDetails/CharacterDetailTitle";
-import PilotedShipList from "./PilotedShipCart";
 
 const ContainerBig = styled.div`
   display: flex;
@@ -49,52 +48,34 @@ const StarshipTitle = styled.div`
 `;
 
 const CharacterDetail = props => {
-  const [character, setCharacter] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      let ep = props.match.params.characterId;
-      //   console.log(props.match.params)
-      const result = await allPeople;
-      if (result) {
-        const episode = result.data.allPeople.edges.find(x => {
-          // console.log(x.node.episodeId);
-          return x.node.id.toString() === ep;
-        });
-        if (episode) {
-          setCharacter(episode.node);
-        } else {
-          const episodeOther = result.data.allPeople.edges.find(x => {
-            // console.log(x.node.episodeId);
-            return x.node.id.toString() === "people.10";
-          });
-          setCharacter(episodeOther.node);
-        }
-      }
-    };
-    fetchData();
-  }, [props]);
+  // console.log("CharacterDetail", props);
+ 
   return (
     <>
-      <CharacterDetailTitle name={character && character.name} />
+      <CharacterDetailTitle name={props.person && props.person.name} />
       <ContainerBig>
         {/* <Container> */}
         <ContainerSmall>
           <CartCharacterDetail
-            name={character && character.name}
-            height={character && character.height}
-            mass={character && character.mass}
-            species={character && character.species && character.species.name}
-            homeworld={
-              character && character.homeworld && character.homeworld.name
+            name={props.person && props.person.name}
+            height={props.person && props.person.height}
+            mass={props.person && props.person.mass}
+            species={
+              props.person && props.person.species && props.person.species.name
             }
-            url={character && character.image}
+            homeworld={
+              props.person &&
+              props.person.homeworld &&
+              props.person.homeworld.name
+            }
+            url={props.person && props.person.image}
           />
         </ContainerSmall>
         <ContainerSmall>
           <StarshipTitle>
             <h2>Piloted Starships</h2>
           </StarshipTitle>
-          <PilotedShipList />
+          {props.children}
         </ContainerSmall>
 
         {/* </Container> */}
