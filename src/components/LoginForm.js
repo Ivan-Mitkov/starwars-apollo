@@ -67,8 +67,14 @@ ${props => {
   }}
 `;
 
+const Error=styled.div`
+font-size:2rem;
+color:red;
+`;
+
 
  class LoginForm extends Component {
+   
   state = { email: 'demo@st6.io',password:'demo1234' };
 
   onChangeEmail = event => {
@@ -90,9 +96,11 @@ ${props => {
 
 
   render() {
+    // console.log(this.props)
     return (
       <Container>
         <Title>SWAPP</Title>
+        {this.props.error&&<Error>{this.props.error}</Error>}
         <ContainerInput>
 
       
@@ -105,7 +113,7 @@ ${props => {
             placeholder="Email"
             data-testid="login-input"
             onChange={this.onChangeEmail}
-            value='demo@st6.io'
+            // value='demo@st6.io'
           />
           <Input
             required
@@ -113,7 +121,7 @@ ${props => {
             name="password"
             placeholder="password"
             data-testid="login-input"
-            value="demo1234"
+            // value="demo1234"
             onChange={this.onChangePass}
           />
           <Button text="Log in" type="submit"></Button>
