@@ -2,11 +2,12 @@ import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { ApolloLink, from } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import {API_URL} from "../config";
 // import { writeDataForLoggin } from "./writeInCache";
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
-  uri: "https://swapp.st6.io/graphql"
+  uri: API_URL
   // uri: "http://softuni-swapp-212366186.eu-west-1.elb.amazonaws.com/graphql"
   // Additional fetch options like `credentials` or `headers`
 });

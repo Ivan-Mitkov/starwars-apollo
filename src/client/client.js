@@ -10,7 +10,7 @@
 // const client = new ApolloClient({
 //   cache,
 //   link: new HttpLink({
-//     uri: " https://swapp.st6.io/graphql"
+//     uri: " API_URL"
    
 //   }),
 //   request: (operation) => {

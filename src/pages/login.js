@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
