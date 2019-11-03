@@ -3,6 +3,7 @@ export const lightTheme = {
   color: "#4E5B6E",
   Yellow: "#FFE300",
   LightBlue: "#4BD5EE",
+  Grey:"#E5E9F2",
   Black: "#000",
   White: " #FFF",
   cards: {

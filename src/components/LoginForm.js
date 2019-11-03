@@ -1,8 +1,74 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
+import { withTheme } from "styled-components";
+import Button from './ButtonLoadMore';
+
+const Container=styled.div`
+width:80%;
+min-width:300px;
+margin:0 auto;
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background-color:black;
+`;
+
+const Title=styled.div`
+font-size:10rem;
+color:${props=>props.theme.Yellow};
+@media (max-width: 800px) {
+   font-size:7rem;
+   line-height:10rem;
+  }
+@media (max-width: 500px) {
+   font-size:3rem;
+   line-height:10rem;
+  }
+
+`;
+const ContainerInput=styled.div`
+flex-grow:2;
+background-color:${props=>props.theme.cards.background};
+width:90%;
+margin:20px;
+padding:20px;
+border-radius:8px;
+
+`;
+const Form=styled.form`
+height:90%;
+width:100%;
 
 
+`;
+const InputDiv=styled.div`
+margin:0 auto;
+display:flex;
+flex-direction:column;
+justify-content:space-evenly;
+align-items:flex-end;
+height:90%;
+width:60%;
+@media (max-width:800px) {
+  width:80%;
+}
+@media (max-width:600px) {
+  width:100%;
+}
+`;
+const Input=styled.input`
+width:100%;
+line-height:3rem;
+border-radius:8px;
+${props => {
+    return { ...props.theme.input };
+  }}
+`;
 
-export default class LoginForm extends Component {
+
+ class LoginForm extends Component {
   state = { email: 'demo@st6.io',password:'demo1234' };
 
   onChangeEmail = event => {
@@ -21,11 +87,18 @@ export default class LoginForm extends Component {
     this.props.login({ variables: { email: this.state.email,password:this.state.password } });
   };
 
+
+
   render() {
     return (
+      <Container>
+        <Title>SWAPP</Title>
+        <ContainerInput>
+
       
-        <form onSubmit={this.onSubmit}>
-          <input
+        <Form onSubmit={this.onSubmit}>
+          <InputDiv>
+          <Input
             required
             type="email"
             name="email"
@@ -34,7 +107,7 @@ export default class LoginForm extends Component {
             onChange={this.onChangeEmail}
             value='demo@st6.io'
           />
-          <input
+          <Input
             required
             type="password"
             name="password"
@@ -43,13 +116,16 @@ export default class LoginForm extends Component {
             value="demo1234"
             onChange={this.onChangePass}
           />
-          <button type="submit">Log in</button>
-        </form>
-    
+          <Button text="Log in" type="submit"></Button>
+          </InputDiv>
+        </Form>
+        </ContainerInput>
+
+        </Container>
     );
   }
 }
-
+export default withTheme(LoginForm) 
 /**
  * STYLED COMPONENTS USED IN THIS FILE ARE BELOW HERE
  */
