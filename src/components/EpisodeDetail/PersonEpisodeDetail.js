@@ -20,6 +20,18 @@ const Cart = styled.div`
     flex-direction: column;
     
   }
+  @media (min-width: 800px) {
+    height: 15vh;
+    flex-direction: row;
+    justify-content:space-between;
+
+  }
+  @media (min-width: 2000px) {
+    height: 10vh;
+    flex-direction: row;
+    justify-content:space-between;
+
+  }
 
   /* &:hover {
     transform: translate(-1px, -1px) scale(1.01);
@@ -37,12 +49,22 @@ const Image = styled.div`
     max-height: 70%;
     border-radius: 12px 12px 0 0;
   }
+  @media (min-width: 1200px) {
+    width: 40%;
+  
+
+  }
+  @media (min-width: 2000px) {
+    width: 80%;
+    
+
+  }
 `;
 
 const SubHeader = styled.div`
   padding: 0 12px 12px 12px;
   font-size: 1.5rem;
-  width:100%;
+ 
   height:20%;
   ${props => {
     return { ...props.theme.primaryHeading };
@@ -54,6 +76,16 @@ const SubHeader = styled.div`
     /* padding: 0 0 30px 0 ; */
     text-align:center;
     align-self:center;
+    width:100%;
+  }
+   @media (min-width: 800px) {
+    /* width: 100%; */
+    /* max-height: 70%; */
+    border-radius: 12px 12px 0 0;
+    /* padding: 0 0 30px 0 ; */
+    text-align:center;
+    align-self:center;
+    /* min-width:40%; */
   }
 `;
 

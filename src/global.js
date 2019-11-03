@@ -1,14 +1,18 @@
 import { createGlobalStyle } from "styled-components";
-
 export const GlobalStyles = createGlobalStyle`
   *,
   *::after,
   *::before {
     box-sizing: border-box;
   }
-  /* @font-face {
-  font-family: 'StarWars';
-  src: local('StarWars'), url(./fonts/SfDistantGalaxyAltoutline-e2Bp.ttf) format('truetype'); */
+  @font-face {
+  font-family: 'SF Distant Galaxy';
+  src: url('./fonts/SfDistantGalaxyAltoutline-e2Bp.ttf')  format('truetype');
+}
+
+html{
+  font-family:  'Roboto','Segoe UI',Helvetica,'SF Distant Galaxy', -apple-system,  Roboto,  Arial, sans-serif;
+
 }
   body {
     align-items: center;
@@ -18,12 +22,13 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     margin: 0;
     padding: 0;
-    /* font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; */
 
-    @font-face {
+    /* @font-face {
      font-family: 'StarWars';
-      src: local('StarWars'), url(./fonts/SfDistantGalaxyAltoutline-e2Bp.ttf) format('truetype');
-  }
+      src: local('SfDistantGalaxyAltoutline-e2Bp');
+      src: url("./fonts/SfDistantGalaxyAltoutline-e2Bp.ttf") format('truetype');
+      font-display: fallback
+  } */
     transition: all 0.25s linear;
   }
 

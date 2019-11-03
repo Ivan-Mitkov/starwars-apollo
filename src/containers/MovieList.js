@@ -11,16 +11,23 @@ import CartMovie from "../components/CartMovie";
 // import Login from "../pages/Login";
 
 const MoviesList = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-content: space-between;
+  align-content: flex-start;
   height: 100vh;
   padding: 3rem;
-
+  margin: 0 auto;
   @media (max-width: 800px) {
     justify-content: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  @media (min-width: 2000px) {
+    margin: 0 auto;
+    width: 66%;
+    align-content: flex-start;
     padding: 2rem;
   }
 `;
@@ -69,8 +76,7 @@ const MovieList = props => {
   } = data;
   // console.log("allEpisodes data:", edges);
 
-  const onClickHandle = (epId) => {
-
+  const onClickHandle = epId => {
     props.history.push(`/episodes/${epId}`);
   };
   const formatCrawl = (i, words) => {
@@ -79,7 +85,7 @@ const MovieList = props => {
         edges[i].node.openingCrawl
           .split(" ")
           .slice(0, words)
-          .join(" ") + "..."
+          .join(" ") + " ..."
       );
     }
     return "";
@@ -94,7 +100,7 @@ const MovieList = props => {
                 key={edges && m.node.episodeId}
                 url={edges && m.node.image}
                 title={edges && m.node.title}
-                openingCrawl={edges && formatCrawl(i, 15)}
+                openingCrawl={edges && formatCrawl(i, 12)}
                 onClick={() => onClickHandle(m.node.episodeId)}
               />
             );

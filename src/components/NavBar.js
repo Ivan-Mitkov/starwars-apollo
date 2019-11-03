@@ -16,11 +16,13 @@ const Navbar = styled.div`
 `;
 
 const SwapButton = styled.div`
-  font-family: "StarWars";
+  /* font-family: "StarWars"; */
   font-size: 3rem;
   color: ${props => props.theme.Yellow};
   margin-left: 32px;
   flex-grow: 2;
+  font-weight:900;
+  font-family:'SF Distant Galaxy';
   @media (max-width: 500px) {
     font-size: 2rem;
     flex-grow: 1;

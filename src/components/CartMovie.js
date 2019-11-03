@@ -15,6 +15,22 @@ const Cart = styled.div`
   &:hover {
     transform: translate(-1px, -1px) scale(1.01);
   }
+  /* @media (min-width: 1000px) {
+    height: 45vh;
+  } */
+  @media (min-width: 1700px) {
+    height: 60vh;
+  }
+  @media (min-width: 2000px) {
+    height: 40vh;
+  }
+
+  @media (max-width: 800px) {
+    height: 66vh;
+  }
+  @media (max-width: 400px) {
+    height: 60vh;
+  }
 `;
 
 const Image = styled.div`
@@ -28,13 +44,13 @@ const MainHeader = styled.h1`
     return { ...props.theme.primaryHeading };
   }}
   margin:12px;
-  font-weight:800;
+  font-weight: 600;
 `;
 
-const Text=styled.div`
-  padding:0 12px 12px 12px;
-  font-size:1.2rem;
-
+const Text = styled.div`
+  padding: 0 12px 12px 12px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
 `;
 const CartMovie = props => {
   // console.log(`cart movie: ${props.id}`);

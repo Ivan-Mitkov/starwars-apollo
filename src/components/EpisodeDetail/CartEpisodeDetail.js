@@ -41,7 +41,7 @@ const MainHeader = styled.h1`
     return { ...props.theme.primaryHeading };
   }}
   margin:12px;
-  font-weight: 800;
+  font-weight: 600;
 `;
 
 const SubHeader = styled.div`

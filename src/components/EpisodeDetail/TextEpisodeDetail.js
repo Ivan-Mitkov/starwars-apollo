@@ -53,7 +53,7 @@ span.name{
 
 const TextEpisodeDetail = props => {
     // console.log({props});
-    const text=props.text&&props.text.split(' ').slice(0,50).join(' ')
+    const text=props.text&&props.text.split(' ').slice(0,45).join(' ')
   return (
     <Texts>
       <Openings >{text}...</Openings>
