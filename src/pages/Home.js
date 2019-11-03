@@ -19,12 +19,13 @@ const IS_LOGGED_IN = gql`
 const Home = ({ toggleTheme }) => {
   const { data } = useQuery(IS_LOGGED_IN);
   
-  // console.log('data home: ',data)
+  console.log('data home: ',data)
   const handleLogout = () => {
     client.writeData({ data: { isLoggedIn: false} });
     localStorage.setItem("token", "");
   };
   return (
+    
     <BrowserRouter>
       <NavBar
         toggleTheme={toggleTheme}
@@ -32,7 +33,7 @@ const Home = ({ toggleTheme }) => {
         handleLogout={handleLogout}
       />
       {/* <Routes /> */}
-      {data.isLoggedIn ? <Routes /> : <Login />}
+      {data&&data.isLoggedIn ? <Routes /> : <Login />}
     </BrowserRouter>
   );
 };

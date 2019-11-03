@@ -13,7 +13,7 @@ const Texts = styled.div`
   align-items: flex-start;
   justify-content:end;
   padding:12px;
-  font-size:1.5rem;
+  font-size:1.2rem;
   line-height:2rem;
   ${props => {
     return { ...props.theme.cards };

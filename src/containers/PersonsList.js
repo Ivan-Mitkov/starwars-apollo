@@ -39,11 +39,11 @@ const ButtonDiv = styled.div`
   padding: 20px;
 `;
 const PeopleList = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: space-between;
+  justify-content: space-between;
+  align-content: space-evenly;
   /* height: 100vh; */
   padding: 0 5rem;
   margin: 3rem auto;
