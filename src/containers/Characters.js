@@ -8,6 +8,7 @@ import People from "../components/EpisodeDetail/PersonEpisodeDetail";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
 import Button from '../components/ButtonLoadMore';
+// import Login from "../pages/Login";
 
 const PeopleList = styled.div`
   width: 100%;

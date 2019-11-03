@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import CharacterDetail from "./CharacterDetailCart";
 import PilotedShips from "./PilotedShipCart";
 import Loading from "../../components/Loading";
+// import Login from "../../pages/Login";
 
 const CHARACTER_DETAIL = gql`
   query person($id: ID!) {
@@ -49,7 +50,7 @@ const CharacterData = props => {
   if (loading) return <Loading />;
   if (error) {
     console.log(error);
-    return <p>Error on getting character</p>;
+    return <p>Error loading</p>;
   }
 
   const { person } = data;

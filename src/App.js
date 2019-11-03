@@ -16,11 +16,17 @@ import client from "./client/client2";
 import Home from "./pages/Home";
 
 function App() {
-  const [theme, toggleTheme] = useDarkMode();
-  useEffect(() => {
-    const logOut = () => localStorage.setItem("token", "");
-    return () => logOut();
-  });
+  const [theme, toggleTheme,componentMounted] = useDarkMode();
+ 
+//if we want to logout user when closing aplication
+  // useEffect(() => {
+  //   const logOut = () => localStorage.setItem("token", "");
+  //   return () => logOut();
+  // },[]);
+
+  if (!componentMounted) {
+    return <div />
+  };
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme === "lightTheme" ? lightTheme : darkTheme}>

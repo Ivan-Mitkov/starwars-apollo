@@ -24,22 +24,22 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-//   const otherMiddleware = new ApolloLink((operation, forward) => {
-//     // add the recent-activity custom header to the headers
-//     operation.setContext(({ headers = {} }) => ({
-//       headers: {
-//         ...headers,
-//         'Autori': localStorage.getItem('lastOnlineTime') || null,
-//       }
-//     }));
+  // const otherMiddleware = new ApolloLink((operation, forward) => {
+  //   // add the recent-activity custom header to the headers
+  //   operation.setContext(({ headers = {} }) => ({
+  //     headers: {
+  //       ...headers,
+  //       'theme': localStorage.getItem('theme') || null,
+  //     }
+  //   }));
 
-//     return forward(operation);
-//   })
+  //   return forward(operation);
+  // })
 
 const client = new ApolloClient({
   link: from([
     authMiddleware,
-    //   otherMiddleware,
+      // otherMiddleware,
     httpLink
   ]),
   cache

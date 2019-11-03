@@ -8,6 +8,7 @@ import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
 // import { movies } from "../data/movies2";
 import CartMovie from "../components/CartMovie";
+// import Login from "../pages/Login";
 
 const MoviesList = styled.div`
   width: 100%;
