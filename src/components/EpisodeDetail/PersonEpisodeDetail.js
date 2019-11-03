@@ -10,7 +10,7 @@ const Cart = styled.div`
   min-width: 250px;
   border-radius: 12px;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   ${props => {
     return { ...props.theme.cards };
@@ -18,19 +18,16 @@ const Cart = styled.div`
   @media (max-width: 800px) {
     height: 50vh;
     flex-direction: column;
-    
   }
   @media (min-width: 800px) {
     height: 15vh;
     flex-direction: row;
-    justify-content:space-between;
-
+    justify-content: space-between;
   }
   @media (min-width: 2000px) {
     height: 10vh;
     flex-direction: row;
-    justify-content:space-between;
-
+    justify-content: space-between;
   }
 
   /* &:hover {
@@ -51,41 +48,35 @@ const Image = styled.div`
   }
   @media (min-width: 1200px) {
     width: 40%;
-  
-
   }
   @media (min-width: 2000px) {
     width: 80%;
-    
-
   }
 `;
 
 const SubHeader = styled.div`
-  padding: 0 12px 12px 12px;
   font-size: 1.5rem;
- 
-  height:20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 20%;
+  line-height: 3rem;
   ${props => {
     return { ...props.theme.primaryHeading };
   }}
-   @media (max-width: 800px) {
-    /* width: 100%; */
-    /* max-height: 70%; */
-    border-radius: 12px 12px 0 0;
-    /* padding: 0 0 30px 0 ; */
-    text-align:center;
-    align-self:center;
-    width:100%;
+  span {
+    padding-left: 20px;
+    display: inline-block;
   }
-   @media (min-width: 800px) {
-    /* width: 100%; */
-    /* max-height: 70%; */
+  @media (max-width: 800px) {
     border-radius: 12px 12px 0 0;
-    /* padding: 0 0 30px 0 ; */
-    text-align:center;
-    align-self:center;
-    /* min-width:40%; */
+    justify-content: center;
+    width: 100%;
+  }
+  @media (min-width: 800px) {
+    height: 100%;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
   }
 `;
 
@@ -95,7 +86,9 @@ const CartMovie = props => {
     <Cart onClick={props.onClick}>
       <Image style={{ backgroundImage: `url("${props.url}")` }}></Image>
 
-      <SubHeader>{props.name}</SubHeader>
+      <SubHeader>
+        <span>{props.name}</span>
+      </SubHeader>
     </Cart>
   );
 };
