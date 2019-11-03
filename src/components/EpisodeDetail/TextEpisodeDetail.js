@@ -4,7 +4,7 @@ import { withTheme } from "styled-components";
 
 const Texts = styled.div`
   width: 66%;
-  height: 25vh;
+  height: 30vh;
   margin: 0 auto;
   min-width: 250px;
   border-radius: 12px;
@@ -13,6 +13,8 @@ const Texts = styled.div`
   align-items: flex-start;
   justify-content:end;
   padding:12px;
+  font-size:1.5rem;
+  line-height:2rem;
   ${props => {
     return { ...props.theme.cards };
   }}
@@ -38,7 +40,7 @@ const Openings = styled.div`
   /* background: red; */
   margin-bottom:16px;
 
-  font-size:1rem;
+  
 `;
 const Detail=styled.div`
 justify-self:flex-end;

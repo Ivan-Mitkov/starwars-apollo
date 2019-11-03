@@ -11,9 +11,10 @@ const StarshipList = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-between;
-  height: 20vh;
+  /* height: 20vh; */
   padding: 0 5rem;
   margin: 3rem auto;
+ 
 
   @media (max-width: 800px) {
     justify-content: center;

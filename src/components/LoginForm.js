@@ -62,6 +62,7 @@ const Input=styled.input`
 width:100%;
 line-height:3rem;
 border-radius:8px;
+font-size:1.5rem;
 ${props => {
     return { ...props.theme.input };
   }}

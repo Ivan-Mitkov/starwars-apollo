@@ -12,6 +12,8 @@ const Cart = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-size:1.2rem;
+  line-height:2rem;
   ${props => {
     return { ...props.theme.cards };
   }}

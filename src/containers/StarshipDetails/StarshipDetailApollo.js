@@ -37,7 +37,7 @@ const ContainerBig = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 80%;
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     margin: 0 auto;
   }
@@ -52,6 +52,7 @@ const ContainerSmall = styled.div`
   @media (max-width: 800px) {
     margin: 0 auto;
   }
+
 `;
 const StarshipTitle = styled.div`
   line-height: 3rem;
@@ -73,9 +74,10 @@ const StarshipTitle = styled.div`
   }
 `;
 const RadarContainer = styled.div`
-  ${props => {
-    return { ...props.theme.radar };
-  }}
+ background-color:${props=>props.theme.radar.fill};
+ display:flex;
+ align-items:center;
+ justify-content:center;
 `;
 const StarshipDetail = props => {
   let allStarshipsFromData = null;
@@ -184,6 +186,7 @@ const StarshipDetail = props => {
   }
   findMax();
   findData();
+ 
   return (
     <>
       <CharacterDetailTitle name={starship && starship.name} />

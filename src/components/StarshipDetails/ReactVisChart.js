@@ -1,12 +1,12 @@
 import React from "react";
 import { format } from "d3-format";
 import { RadarChart } from "react-vis";
+import { withTheme } from "styled-components";
 
 const basicFormat = format(".1r");
 const wideFormat = format(".3r");
 
-export default function BasicRadarChart(props) {
-  // console.log(props.range);
+ function BasicRadarChart(props) {
   const { cost, Crew, MaxAtmSpeed, HyperDRat, MaxMLh } = props.range;
   let DATA=null;
   if (props.range && props.data) {
@@ -21,7 +21,7 @@ export default function BasicRadarChart(props) {
         fillOpacity: 0.1,
         strokeOpacity: 0.1,
         strokeWidth: 2,
-        fill: "#eee",
+        fill: props.theme.radar.fill,
         stroke: 2
       },
       {
@@ -34,7 +34,7 @@ export default function BasicRadarChart(props) {
         fillOpacity: 0.1,
         strokeOpacity: 0.1,
         strokeWidth: 2,
-        fill: "#eee",
+        fill:  props.theme.radar.fill,
         stroke: 2
       },
       {
@@ -47,7 +47,7 @@ export default function BasicRadarChart(props) {
         fillOpacity: 0.1,
         strokeOpacity: 0.1,
         strokeWidth: 2,
-        fill: "#eeeeee",
+        fill:  props.theme.radar.fill,
         stroke: 2
       },
       {
@@ -60,12 +60,12 @@ export default function BasicRadarChart(props) {
         fillOpacity: 0.1,
         strokeOpacity: 0.5,
         strokeWidth: 2,
-        fill: "#aaaaaa",
+        fill:  props.theme.radar.color,
         stroke: 2
       }
     ];
   }
-  console.log(DATA);
+  // console.log(DATA);
 
   return (
     <RadarChart
@@ -75,30 +75,32 @@ export default function BasicRadarChart(props) {
       startingAngle={0}
       hideInnerMostValues={true}
       renderAxesOverPolygons={true}
+      
       style={{
         labels: {
-          fontSize: 12,
+          fontSize: 14,
+          fontWeight:200,
           textAnchor: "middle",
-          stroke: "blue",
+          stroke: props.theme.radar.color,
         },
         polygons: {
-          stroke: "blue"
+          stroke: props.theme.radar.stroke
         },
         axes: {
           line: {
             // fill: "black",
             strokeWidth: 2,
-            stroke: "blue"
+            stroke: props.theme.radar.stroke
           },
           ticks: {
             // fill: "black",
             strokeWidth: 1,
-            stroke: "blue"
+            stroke: props.theme.radar.stroke
           },
           text: {
-            fontSize: 10,
-            stroke: "blue",
-            fill: "#0000ff"
+            fontSize: 14,
+            stroke:props.theme.radar.stroke,
+            fill: props.theme.radar.color
           }
         }
       }}
@@ -138,3 +140,4 @@ export default function BasicRadarChart(props) {
     />
   );
 }
+export default withTheme(BasicRadarChart);

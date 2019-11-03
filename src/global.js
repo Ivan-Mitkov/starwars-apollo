@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
 
 html{
   font-family:  'Roboto','Segoe UI',Helvetica,'SF Distant Galaxy', -apple-system,  Roboto,  Arial, sans-serif;
-
+  
 }
   body {
     align-items: center;
