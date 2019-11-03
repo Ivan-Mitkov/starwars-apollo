@@ -15,6 +15,7 @@ const Cart = styled.div`
   ${props => {
     return { ...props.theme.cards };
   }}
+  
   @media (max-width: 800px) {
     height: 50vh;
     flex-direction: column;

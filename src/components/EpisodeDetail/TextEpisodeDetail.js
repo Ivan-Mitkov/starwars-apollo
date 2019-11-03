@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { withTheme } from "styled-components";
 
 const Texts = styled.div`
-  width: 66%;
+  width: 60%;
   height: 30vh;
   margin: 0 auto;
   min-width: 250px;
@@ -18,22 +18,55 @@ const Texts = styled.div`
   ${props => {
     return { ...props.theme.cards };
   }}
-  @media (max-width: 800px) {
-    height: 35vh;
-    flex-direction: column;
-  }
-  @media (max-width: 700px) {
+ @media (max-width: 1600px) {
+    width: 60%;
     height: 40vh;
     flex-direction: column;
   }
-  @media (max-width: 550px) {
+ @media (max-width: 1200px) {
+    width: 60%;
     height: 45vh;
     flex-direction: column;
   }
-  @media (max-width: 450px) {
+ @media (max-width: 1000px) {
+    width: 60%;
     height: 50vh;
     flex-direction: column;
   }
+  
+ 
+  @media (max-width: 800px) {
+    width: 60%;
+    height: 55vh;
+    flex-direction: column;
+  }
+  @media (max-width: 700px) {
+    width: 70%;
+    height: 55vh;
+    flex-direction: column;
+  }
+  @media (max-width: 600px) {
+    width: 80%;
+    height: 60vh;
+    flex-direction: column;
+  }
+  @media (max-width: 550px) {
+    width: 90%;
+    height: 60vh;
+    flex-direction: column;
+  }
+  @media (max-width: 450px) {
+    width: 90%;
+    height: 70vh;
+    flex-direction: column;
+  }
+  @media (max-width: 200px) {
+    width: 90%;
+    height: 75vh;
+    flex-direction: column;
+  }
+ 
+  
 `;
 const Openings = styled.div`
   /* height: 66%; */
