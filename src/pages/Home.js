@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter  } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
@@ -7,8 +7,15 @@ import Login from "./Login";
 import NavBar from "../components/NavBar";
 import Routes from "../Routes";
 import client from "../client/client2";
+import Loading from "../components/Loading";
 
-
+const ME = gql`
+  query me {
+    me {
+      id
+    }
+  }
+`;
 
 const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
@@ -17,22 +24,28 @@ const IS_LOGGED_IN = gql`
 `;
 
 const Home = ({ toggleTheme }) => {
-  const { data } = useQuery(IS_LOGGED_IN);
-  
-  console.log('data home: ',data)
+  const { data: ISLOGGED } = useQuery(IS_LOGGED_IN);
+  const { loading, error, data: USER } = useQuery(ME,{fetchPolicy:"network-only"});
+  if (loading) return <Loading />;
+  if (error) {
+    // console.log(error);
+    return <p>Error on getting all movies</p>;
+  }
+  console.log("data home: ", ISLOGGED);
+  console.log("data user: ", USER.me.id);
   const handleLogout = () => {
-    client.writeData({ data: { isLoggedIn: false} });
+    client.writeData({ data: { isLoggedIn: false } });
     localStorage.setItem("token", "");
   };
   return (
     <BrowserRouter>
       <NavBar
         toggleTheme={toggleTheme}
-        isLogged={data.isLoggedIn}
+        isLogged={ISLOGGED.isLoggedIn}
         handleLogout={handleLogout}
       />
       {/* <Routes /> */}
-      {data && data.isLoggedIn ? <Routes /> : <Login />}
+      {(ISLOGGED && ISLOGGED.isLoggedIn)&&(USER&&USER.me.id) ? <Routes /> : <Login />}
     </BrowserRouter>
   );
 };
