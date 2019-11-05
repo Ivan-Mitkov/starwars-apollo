@@ -37,15 +37,30 @@ const Home = ({ toggleTheme }) => {
     client.writeData({ data: { isLoggedIn: false } });
     localStorage.setItem("token", "");
   };
+
+  const toRender=()=>{
+    let toRender= <Login />
+    if(!USER.me){
+      toRender=<Login />
+   }
+    if(ISLOGGED && ISLOGGED.isLoggedIn){
+      toRender=<Routes />
+      if(!USER){
+        toRender=<Login/>
+      }
+    }
+   console.log(USER)
+    return toRender;
+  }
   return (
     <BrowserRouter>
       <NavBar
         toggleTheme={toggleTheme}
-        isLogged={ISLOGGED.isLoggedIn}
+        isLogged={ISLOGGED}
         handleLogout={handleLogout}
       />
       {/* <Routes /> */}
-      {(ISLOGGED && ISLOGGED.isLoggedIn)&&(USER&&USER.me.id) ? <Routes /> : <Login />}
+      {toRender()}
     </BrowserRouter>
   );
 };
