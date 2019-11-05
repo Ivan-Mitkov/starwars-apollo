@@ -32,7 +32,7 @@ const Home = ({ toggleTheme }) => {
     return <p>Error on getting all movies</p>;
   }
   console.log("data home: ", ISLOGGED);
-  console.log("data user: ", USER.me.id);
+  console.log("data user: ", USER);
   const handleLogout = () => {
     client.writeData({ data: { isLoggedIn: false } });
     localStorage.setItem("token", "");
