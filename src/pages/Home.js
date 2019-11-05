@@ -36,7 +36,7 @@ const Home = ({ toggleTheme }) => {
     handleLogout()
    }
    
-  }, [data,ISLOGGED]);
+  }, [data]);
 
   useEffect(() => {
    if(!data){
