@@ -28,5 +28,5 @@ export const useDarkMode = () => {
     setComponentMounted(true);
   }, []);
 
-  return [theme, toggleTheme,componentMounted];
+  return [theme, toggleTheme, componentMounted];
 };

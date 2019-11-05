@@ -6,9 +6,7 @@ import Loading from "../components/Loading";
 import styled from "styled-components";
 import { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
-// import { movies } from "../data/movies2";
 import CartMovie from "../components/CartMovie";
-// import Login from "../pages/Login";
 
 const MoviesList = styled.div`
   width: 80%;
@@ -50,17 +48,7 @@ const ALL_EPISODES = gql`
   }
 `;
 const MovieList = props => {
-  // const [edges, setMovie] = useState(null);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await movies;
-  //     if (result) {
-  //       // console.log(result);
-  //       setMovie(result.data.allEpisodes.edges);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+ 
   ///from Apolo
   const { loading, error, data } = useQuery(ALL_EPISODES, {
     variables: { first: 7 }

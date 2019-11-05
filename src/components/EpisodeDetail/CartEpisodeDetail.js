@@ -11,13 +11,11 @@ const Cart = styled.div`
   border-radius: 12px;
   display: flex;
   align-items: center;
- 
 
   ${props => {
     return { ...props.theme.cards };
   }}
 
- 
   @media (max-width: 850px) {
     width: 60%;
     height: 55vh;
@@ -38,10 +36,6 @@ const Cart = styled.div`
     height: 60vh;
     flex-direction: column;
   }
-
-  /* &:hover {
-    transform: translate(-1px, -1px) scale(1.01);
-  } */
 `;
 
 const Image = styled.div`
@@ -49,8 +43,7 @@ const Image = styled.div`
   height: 100%;
   background-size: cover;
   border-radius: 12px 0 0 12px;
-  
-  /* min-width: 200px; */
+
   @media (max-width: 850px) {
     width: 100%;
     max-height: 80%;

@@ -3,13 +3,12 @@ export const lightTheme = {
   color: "#4E5B6E",
   Yellow: "#FFE300",
   LightBlue: "#4BD5EE",
-  Grey:"#E5E9F2",
+  Grey: "#E5E9F2",
   Black: "#000",
   White: " #FFF",
   cards: {
     border: "1px solid #E5E9F2 ",
-    background: "#FFF",
-   
+    background: "#FFF"
   },
   solidButton: {
     background: "#000",
@@ -36,18 +35,18 @@ export const lightTheme = {
   },
   radar: {
     labels: {
-      fontSize: '14',
+      fontSize: "14",
       color: "#4BD5EE",
-      stroke: "#3C4858",
+      stroke: "#3C4858"
     },
     fill: "#000",
     stroke: "#3C4858",
-    strokeWidth: '2',
+    strokeWidth: "2",
     color: "#4BD5EE",
-    fontSize: '14',
+    fontSize: "14"
   },
-  name:{
-    color:'inherit'
+  name: {
+    color: "inherit"
   }
 };
 
@@ -88,10 +87,10 @@ export const darkTheme = {
   radar: {
     fill: "#000",
     stroke: "#333",
-    fontSize: '14',
+    fontSize: "14",
     color: "#FFE300"
   },
-  name:{
-    color:'#4BD5EE'
+  name: {
+    color: "#4BD5EE"
   }
 };

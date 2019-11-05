@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 import CharacterDetail from "./CharacterDetailCart";
 import PilotedShips from "./PilotedShipCart";
 import Loading from "../../components/Loading";
-// import Login from "../../pages/Login";
 
 const CHARACTER_DETAIL = gql`
   query person($id: ID!) {

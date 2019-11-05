@@ -15,7 +15,7 @@ const Cart = styled.div`
   ${props => {
     return { ...props.theme.cards };
   }}
-  
+
   @media (max-width: 800px) {
     height: 50vh;
     flex-direction: column;
@@ -30,10 +30,6 @@ const Cart = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-
-  /* &:hover {
-    transform: translate(-1px, -1px) scale(1.01);
-  } */
 `;
 
 const Image = styled.div`

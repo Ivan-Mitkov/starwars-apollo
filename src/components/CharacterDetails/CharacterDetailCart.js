@@ -12,14 +12,14 @@ const Cart = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-size:1.2rem;
-  line-height:2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
   ${props => {
     return { ...props.theme.cards };
   }}
   @media (max-width: 500px) {
     width: 90%;
-    height:80vh;
+    height: 80vh;
     /* padding:0; */
     margin: 0 auto;
   }

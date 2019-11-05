@@ -8,7 +8,6 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
 import Button from "../components/ButtonLoadMore";
-// import Login from "../pages/Login";
 
 const ALL_PEOPLE_IN_EPISODE = gql`
   query episode($first: Int!, $id: ID!, $after: String) {
@@ -44,7 +43,6 @@ const PeopleList = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-evenly;
-  /* height: 100vh; */
   padding: 0 5rem;
   margin: 3rem auto;
 

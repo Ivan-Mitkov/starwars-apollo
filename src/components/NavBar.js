@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import classes from "classnames";
 import { withTheme } from "styled-components";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const Navbar = styled.div`
@@ -21,13 +20,12 @@ const Navbar = styled.div`
 `;
 
 const SwapButton = styled.div`
-  /* font-family: "StarWars"; */
   font-size: 3rem;
   color: ${props => props.theme.Yellow};
   margin-left: 32px;
   flex-grow: 2;
-  font-weight:900;
-  font-family:'SF Distant Galaxy';
+  font-weight: 900;
+  font-family: "SF Distant Galaxy";
   @media (max-width: 500px) {
     font-size: 2.5rem;
     flex-grow: 1;

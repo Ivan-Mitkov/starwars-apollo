@@ -9,4 +9,4 @@ const Starship = () => {
     )
 }
 
-export default Starship
+export default Starship;

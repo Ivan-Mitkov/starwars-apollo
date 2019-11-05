@@ -15,9 +15,7 @@ const Cart = styled.div`
   &:hover {
     transform: translate(-1px, -1px) scale(1.01);
   }
-  /* @media (min-width: 1000px) {
-    height: 45vh;
-  } */
+
   @media (min-width: 1700px) {
     height: 60vh;
   }

@@ -11,56 +11,49 @@ const StyledButton = styled.button`
   border-radius: 8px;
   font-size: 1.5rem;
   text-align: center;
-  /* background-color: yellow; */
   box-shadow: 0px 0px 1px 1px #eeeeee;
   font-weight: 600;
-  border:none;
+  border: none;
   ${props => {
     return { ...props.theme.solidButton };
   }}
   cursor: pointer;
   &:hover {
-    /* background-color: blue; */
     color: white;
-    box-shadow: 0px 0px 0px 1px #E5E9F2;
+    box-shadow: 0px 0px 0px 1px #e5e9f2;
     font-size: 1.5rem;
     animation: fade 1s;
     opacity: 0.9;
     ${props => {
-    return { ...props.theme.solidButton };
-  }}
+      return { ...props.theme.solidButton };
+    }}
   }
   &:active {
     animation: fade2 0.5s;
     box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.1);
     ${props => {
-    return { ...props.theme.solidButton };
-  }}
+      return { ...props.theme.solidButton };
+    }}
   }
   @keyframes fade {
     0% {
-      /* background-color: ${props=>props.theme.Yellow}; */
       opacity: 1;
     }
     50% {
       opacity: 0.5;
     }
     100% {
-      /* background-color: blue; */
     }
   }
   @keyframes fade2 {
     0% {
-      /* background-color: darkblue; */
       opacity: 1;
     }
     50% {
-      /* background-color: blue; */
       opacity: 0.5;
     }
     100% {
       opacity: 1;
-      /* background-color: darkblue; */
     }
   }
 `;

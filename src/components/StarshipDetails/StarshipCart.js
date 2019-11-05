@@ -20,13 +20,9 @@ const Cart = styled.div`
   @media (max-width: 500px) {
     width: 90%;
     height:80vh;
-    /* padding:0; */
     margin: 0 auto;
   }
 
-  /* &:hover {
-    transform: translate(-1px, -1px) scale(1.01);
-  } */
 `;
 
 const Image = styled.div`
@@ -48,8 +44,6 @@ const MainHeader = styled.h1`
   }}
   margin:12px;
   font-weight: 800;
-
- 
 `;
 
 const Detail = styled.div`

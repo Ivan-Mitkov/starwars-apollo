@@ -18,13 +18,10 @@ const Cart = styled.div`
     
   }
 
-  /* &:hover {
-    transform: translate(-1px, -1px) scale(1.01);
-  } */
 `;
 
 const Image = styled.div`
-  /* width: 80%; */
+
   height: 100%;
   width:30%;
   background-size: contain;
@@ -46,27 +43,6 @@ const MainHeader = styled.h2`
   width:100%;
 `;
 
-// const Detail = styled.div`
-//   justify-self: flex-end;
-//   line-height: 1.8rem;
-//   span.data {
-//     color: ${props => props.theme.primaryHeading.color};
-//   }
-//   span.name {
-//     color: ${props => props.theme.name.color};
-//   }
-// `;
-// const Titles = styled.div`
-//   width: 80%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: space-around;
-//   padding: 16px;
-//   @media (max-width: 800px) {
-//     align-items: flex-start;
-//   }
-// `;
 const CartMovie = props => {
 //   console.log(`cart movie: url("${props.url}")`);
   return (

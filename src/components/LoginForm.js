@@ -58,12 +58,12 @@ width:60%;
   width:100%;
 }
 `;
-const Input=styled.input`
-width:100%;
-line-height:3rem;
-border-radius:8px;
-font-size:1.5rem;
-${props => {
+const Input = styled.input`
+  width: 100%;
+  line-height: 3rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  ${props => {
     return { ...props.theme.input };
   }}
 `;
@@ -102,9 +102,7 @@ color:red;
       <Container>
         <Title>SWAPP</Title>
         {this.props.error&&<Error>{this.props.error}</Error>}
-        <ContainerInput>
-
-      
+        <ContainerInput>      
         <Form onSubmit={this.onSubmit}>
           <InputDiv>
           <Input

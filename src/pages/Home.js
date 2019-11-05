@@ -25,7 +25,6 @@ const Home = ({ toggleTheme }) => {
     localStorage.setItem("token", "");
   };
   return (
-    
     <BrowserRouter>
       <NavBar
         toggleTheme={toggleTheme}
@@ -33,7 +32,7 @@ const Home = ({ toggleTheme }) => {
         handleLogout={handleLogout}
       />
       {/* <Routes /> */}
-      {data&&data.isLoggedIn ? <Routes /> : <Login />}
+      {data && data.isLoggedIn ? <Routes /> : <Login />}
     </BrowserRouter>
   );
 };

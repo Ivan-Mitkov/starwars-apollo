@@ -54,7 +54,6 @@ const CharacterDetail = props => {
     <>
       <CharacterDetailTitle name={props.person && props.person.name} />
       <ContainerBig>
-        {/* <Container> */}
         <ContainerSmall>
           <CartCharacterDetail
             name={props.person && props.person.name}
@@ -77,8 +76,6 @@ const CharacterDetail = props => {
           </StarshipTitle>
           {props.children}
         </ContainerSmall>
-
-        {/* </Container> */}
       </ContainerBig>
     </>
   );

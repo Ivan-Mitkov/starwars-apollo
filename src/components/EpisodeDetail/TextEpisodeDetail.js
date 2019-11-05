@@ -64,26 +64,19 @@ const Texts = styled.div`
     width: 90%;
     height: 75vh;
     flex-direction: column;
-  }
- 
-  
+  }  
 `;
 const Openings = styled.div`
-  /* height: 66%; */
-  /* background: red; */
-  margin-bottom:16px;
-
-  
+  margin-bottom:16px;  
 `;
-const Detail=styled.div`
-justify-self:flex-end;
-span.data{
-  color:${props=>props.theme.primaryHeading.color}
-}
-span.name{
-  color:${props=>props.theme.name.color}
-
-}
+const Detail = styled.div`
+  justify-self: flex-end;
+  span.data {
+    color: ${props => props.theme.primaryHeading.color};
+  }
+  span.name {
+    color: ${props => props.theme.name.color};
+  }
 `;
 
 const TextEpisodeDetail = props => {

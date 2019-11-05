@@ -7,8 +7,7 @@ import { withRouter } from "react-router-dom";
 import People from "../components/EpisodeDetail/PersonEpisodeDetail";
 import gql from "graphql-tag";
 import Loading from "../components/Loading";
-import Button from '../components/ButtonLoadMore';
-// import Login from "../pages/Login";
+import Button from "../components/ButtonLoadMore";
 
 const PeopleList = styled.div`
   width: 100%;
@@ -16,7 +15,6 @@ const PeopleList = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-between;
-  /* height: 100vh; */
   padding: 0 5rem;
   margin: 3rem auto;
 
@@ -88,11 +86,13 @@ const MovieList = props => {
         // console.log("prev", prev.allPeople.edges);
         // console.log("currenet", allPeople.edges);
         const newEdges = allPeople.edges;
-       
-        const result ={allPeople: {
-         ...allPeople,
-          edges: [...prev.allPeople.edges, ...newEdges]
-        }};
+
+        const result = {
+          allPeople: {
+            ...allPeople,
+            edges: [...prev.allPeople.edges, ...newEdges]
+          }
+        };
         // console.log(result);
         return result;
       }
@@ -118,9 +118,11 @@ const MovieList = props => {
               })}
           </PeopleList>
         </div>
-       {pageInfo.hasNextPage&&( <ButtonDiv>
-          <Button text='Load More' onClick={loadMorePeople}/>
-       </ButtonDiv>)}
+        {pageInfo.hasNextPage && (
+          <ButtonDiv>
+            <Button text="Load More" onClick={loadMorePeople} />
+          </ButtonDiv>
+        )}
       </Container>
     </>
   );
